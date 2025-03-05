@@ -147,3 +147,4 @@ namespace MoneyTransfer.Web.Controllers
             return Json(new { rate });
         }
     }
+}
