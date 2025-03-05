@@ -15,6 +15,7 @@ builder.Services.AddDbContext<MoneyTransferDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddHttpClient();
+builder.Services.AddScoped<IExchangeRateService, ExchangeRateService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<EncryptionDecryption>();
 

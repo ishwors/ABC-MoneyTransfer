@@ -1,0 +1,33 @@
+﻿@model MoneyTransfer.Web.Models.ExchangeRate.ExchangeRateViewModel
+
+@{
+	ViewData["Title"] = "Exchange Rate";
+}
+
+<div class="container mt-5">
+	<div class="row justify-content-center">
+		<div class="col-md-7 col-lg-5">
+			<div class="card">
+				<div class="card-body">
+					<h2 class="text-center mb-4">Exchange Rate</h2>
+					<div class="form-group">
+						<label class="form-label">From Currency:</label>
+						<p>@Model.FromCurrency</p>
+					</div>
+					<div class="form-group">
+						<label class="form-label">To Currency:</label>
+						<p>@Model.ToCurrency</p>
+					</div>
+					<div class="form-group">
+						<label class="form-label">Rate:</label>
+						<p>@Model.Rate</p>
+					</div>
+					<div class="form-group">
+						<label class="form-label">Last Updated:</label>
+						<p>@Model.LastUpdated.ToString("yyyy-MM-dd HH:mm:ss")</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
