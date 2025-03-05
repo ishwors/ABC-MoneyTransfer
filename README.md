@@ -21,7 +21,7 @@ Before proceeding with the setup, ensure that you have the following prerequisit
 Run the following command to clone the repository:
 
 ```terminal
-    git clone https://github.com/ishwors/MoneyTransfer.git
+    git clone https://github.com/ishwors/ABC-MoneyTransfer.git
 ```
 
 ### Configure & Run the Application
@@ -46,7 +46,7 @@ Run the following command to clone the repository:
     },
 
     "Hash": {
-        "PasswordHashSecret": "#32!xAz)27:zXa@3" //min size 16 from 16 bytes
+        "PasswordHashSecret": "#32!xAz)27:zXa@3"
     },
 
     "ExternalApi": {
