@@ -79,8 +79,13 @@ namespace MoneyTransfer.Web.Controllers
                 return View(model);
             }
 
-            // Store token in session
-            HttpContext.Session.SetString("JWTToken", token);
+            // Store token in an HTTP-only cookie
+            Response.Cookies.Append("JWTToken", token, new CookieOptions
+            {
+                HttpOnly = true,
+                Secure = true, // Set to true if using HTTPS
+                SameSite = SameSiteMode.Strict
+            });
 
             return RedirectToAction("Index", "Home");
         }
@@ -89,8 +94,16 @@ namespace MoneyTransfer.Web.Controllers
         [HttpPost]
         public IActionResult Logout()
         {
-            HttpContext.Session.Clear();
-            return RedirectToAction("Login");
+            // Clear the JWT token from the cookies
+            Response.Cookies.Delete("JWTToken", new CookieOptions
+            {
+                HttpOnly = true,
+                Secure = true, // Set to true if using HTTPS
+                SameSite = SameSiteMode.Strict
+            });
+
+            // Redirect to the login page
+            return RedirectToAction("Index", "Home");
         }
     }
 }

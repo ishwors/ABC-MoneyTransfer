@@ -1,6 +1,7 @@
 ﻿using MoneyTransfer.Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using MoneyTransfer.Web.Models.ExchangeRate;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MoneyTransfer.Web.Controllers
 {
@@ -13,6 +14,7 @@ namespace MoneyTransfer.Web.Controllers
             _exchangeRateService = exchangeRateService;
         }
 
+        //[Authorize]
         [HttpGet]
         public async Task<IActionResult> Get()
         {
