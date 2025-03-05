@@ -1,0 +1,90 @@
+﻿@model MoneyTransfer.Web.Models.Transaction.TransactionViewModel
+
+@{
+	ViewData["Title"] = "Transfer Money";
+}
+
+<div class="container mt-5">
+	<div class="row justify-content-center">
+		<div class="col-md-7 col-lg-5">
+			<div class="card">
+				<div class="card-body">
+					<h2 class="text-center mb-4">Transfer Money</h2>
+					<form id="transferForm" asp-action="Create" method="post">
+						<div class="d-flex">
+							<div class="m-1">
+								<div class="form-group">
+									<label asp-for="SenderFirstName" class="form-label">Sender First Name</label>
+									<input asp-for="SenderFirstName" class="form-control" />
+									<span asp-validation-for="SenderFirstName" class="text-danger"></span>
+								</div>
+								<div class="form-group">
+									<label asp-for="SenderMiddleName" class="form-label">Sender Middle Name</label>
+									<input asp-for="SenderMiddleName" class="form-control" />
+								</div>
+								<div class="form-group">
+									<label asp-for="SenderLastName" class="form-label">Sender Last Name</label>
+									<input asp-for="SenderLastName" class="form-control" />
+									<span asp-validation-for="SenderLastName" class="text-danger"></span>
+								</div>
+								<div class="form-group">
+									<label asp-for="SenderAddress" class="form-label">Sender Address</label>
+									<input asp-for="SenderAddress" class="form-control" />
+									<span asp-validation-for="SenderAddress" class="text-danger"></span>
+								</div>
+								<div class="form-group">
+									<label asp-for="SenderCountry" class="form-label">Sender Country</label>
+									<input asp-for="SenderCountry" class="form-control" />
+									<span asp-validation-for="SenderCountry" class="text-danger"></span>
+								</div>
+							</div>
+
+							<div class="m-1">
+								<div class="form-group">
+									<label asp-for="ReceiverFirstName" class="form-label">Receiver First Name</label>
+									<input asp-for="ReceiverFirstName" class="form-control" />
+									<span asp-validation-for="ReceiverFirstName" class="text-danger"></span>
+								</div>
+								<div class="form-group">
+									<label asp-for="ReceiverMiddleName" class="form-label">Receiver Middle Name</label>
+									<input asp-for="ReceiverMiddleName" class="form-control" />
+								</div>
+								<div class="form-group">
+									<label asp-for="ReceiverLastName" class="form-label">Receiver Last Name</label>
+									<input asp-for="ReceiverLastName" class="form-control" />
+									<span asp-validation-for="ReceiverLastName" class="text-danger"></span>
+								</div>
+								<div class="form-group">
+									<label asp-for="ReceiverAddress" class="form-label">Receiver Address</label>
+									<input asp-for="ReceiverAddress" class="form-control" />
+									<span asp-validation-for="ReceiverAddress" class="text-danger"></span>
+								</div>
+								<div class="form-group">
+									<label asp-for="ReceiverCountry" class="form-label">Receiver Country</label>
+									<input asp-for="ReceiverCountry" class="form-control" />
+									<span asp-validation-for="ReceiverCountry" class="text-danger"></span>
+								</div>
+								<div class="form-group">
+									<label asp-for="ReceiverBankName" class="form-label">Receiver Bank Name</label>
+									<input asp-for="ReceiverBankName" class="form-control" />
+									<span asp-validation-for="ReceiverBankName" class="text-danger"></span>
+								</div>
+								<div class="form-group">
+									<label asp-for="ReceiverAccountNumber" class="form-label">Receiver Account Number</label>
+									<input asp-for="ReceiverAccountNumber" class="form-control" />
+									<span asp-validation-for="ReceiverAccountNumber" class="text-danger"></span>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label asp-for="TransferAmount" class="form-label">Transfer Amount (MYR)</label>
+							<input asp-for="TransferAmount" class="form-control" type="number" step="0.01" />
+							<span asp-validation-for="TransferAmount" class="text-danger"></span>
+						</div>
+						<button type="submit" class="btn btn-primary btn-block mt-3">Transfer</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

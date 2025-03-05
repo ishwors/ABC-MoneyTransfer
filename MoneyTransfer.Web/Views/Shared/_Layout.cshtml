@@ -32,6 +32,9 @@
 							@if (isAuthenticated)
 							{
 								<li class="nav-item">
+									<a class="nav-link text-dark" asp-area="" asp-controller="Transaction" asp-action="Create">Transfer Money</a>
+								</li>
+								<li class="nav-item">
 									<a class="nav-link text-dark" asp-area="" asp-controller="ExchangeRate" asp-action="Get">Exchange Rate</a>
 								</li>
 								<li class="nav-item">
@@ -75,5 +78,40 @@
 	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="~/js/site.js" asp-append-version="true"></script>
 	@await RenderSectionAsync("Scripts", required: false)
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			document.querySelectorAll('form').forEach(form => {
+				form.addEventListener('submit', function (event) {
+					event.preventDefault();
+					submitFormWithToken(form);
+				});
+			});
+		});
+
+		async function submitFormWithToken(form) {
+			const formData = new FormData(form);
+			const token = document.cookie
+				.split('; ')
+				.find(row => row.startsWith('JWTToken='))
+				?.split('=')[1];
+
+			const response = await fetch(form.action, {
+				method: form.method.toUpperCase(),
+				headers: {
+					'Authorization': `Bearer ${token}`,
+					'Content-Type': 'application/x-www-form-urlencoded'
+				},
+				body: new URLSearchParams(formData).toString()
+			});
+
+			if (response.ok) {
+				window.location.href = response.url;
+			} else {
+				const result = await response.json();
+				console.error('Error:', result);
+			}
+		}
+	</script>
 </body>
 </html>

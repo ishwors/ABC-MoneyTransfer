@@ -1,0 +1,57 @@
+﻿@model MoneyTransfer.Web.Models.Transaction.TransactionDetailsViewModel
+
+@{
+	ViewData["Title"] = "Money Transaction Details";
+}
+
+<div class="container mt-5">
+	<div class="row justify-content-center">
+		<div class="col-md-7 col-lg-5">
+			<div class="card">
+				<div class="card-body">
+					<h2 class="text-center mb-4">Transaction Details</h2>
+					<div class="form-group">
+						<label class="form-label fw-bold fw-bold">Transaction ID:</label>
+						<span>@Model.TransactionId</span>
+					</div>
+					<div class="form-group">
+						<label class="form-label fw-bold">Sender Full Name:</label>
+						<span>@Model.SenderFullName</span>
+					</div>
+					<div class="form-group">
+						<label class="form-label fw-bold">Receiver Full Name:</label>
+						<span>@Model.ReceiverFullName</span>
+					</div>
+					<div class="form-group">
+						<label class="form-label fw-bold">Bank Name:</label>
+						<span>@Model.BankName</span>
+					</div>
+					<div class="form-group">
+						<label class="form-label fw-bold">Account Number:</label>
+						<span>@Model.AccountNumber</span>
+					</div>
+					<div class="form-group">
+						<label class="form-label fw-bold">Transfer Amount:</label>
+						<span>@Model.TransferAmount</span>
+					</div>
+					<div class="form-group">
+						<label class="form-label fw-bold">Exchange Rate:</label>
+						<span>@Model.ExchangeRate</span>
+					</div>
+					<div class="form-group">
+						<label class="form-label fw-bold">Payout Amount:</label>
+						<span>@Model.PayoutAmount</span>
+					</div>
+					<div class="form-group">
+						<label class="form-label fw-bold">Transaction Date:</label>
+						<span>@Model.TransactionDate.ToString("yyyy-MM-dd HH:mm:ss")</span>
+					</div>
+					<div class="form-group">
+						<label class="form-label fw-bold">Status:</label>
+						<span>@Model.Status</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

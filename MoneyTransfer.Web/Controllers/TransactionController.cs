@@ -4,16 +4,17 @@ using Microsoft.AspNetCore.Mvc;
 using MoneyTransfer.Core.DTOs.Transaction;
 using MoneyTransfer.Web.Models.Transaction;
 using MoneyTransfer.Web.Models.ExchangeRate;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MoneyTransfer.Web.Controllers
 {
-
-    public class TransactionsController : Controller
+    //[Authorize]
+    public class TransactionController : Controller
     {
         private readonly ITransactionService _transactionService;
         private readonly IExchangeRateService _exchangeRateService;
 
-        public TransactionsController(
+        public TransactionController(
             ITransactionService transactionService,
             IExchangeRateService exchangeRateService)
         {
@@ -41,7 +42,7 @@ namespace MoneyTransfer.Web.Controllers
 
                 var transactionDto = new TransactionDto
                 {
-                    UserId = Guid.Parse(userId),
+                    UserId = Guid.Parse("EFBDFF31-14AA-4DFB-BECD-08DD5BEF4FA2"),
                     SenderFirstName = model.SenderFirstName,
                     SenderMiddleName = model.SenderMiddleName,
                     SenderLastName = model.SenderLastName,
@@ -107,8 +108,8 @@ namespace MoneyTransfer.Web.Controllers
                 };
             }
 
-            var userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-            var transactions = await _transactionService.GetTransactionsByDateRangeAsync(model.StartDate, model.EndDate, userId);
+            //var userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var transactions = await _transactionService.GetTransactionsByDateRangeAsync(model.StartDate, model.EndDate, null);
 
             model.Transactions = transactions.Select(t => new TransactionSummaryViewModel
             {

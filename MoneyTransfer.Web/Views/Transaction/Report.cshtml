@@ -1,0 +1,61 @@
+﻿@model MoneyTransfer.Web.Models.Transaction.ReportViewModel
+
+@{
+    ViewData["Title"] = "Transaction Report";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="text-center mb-4">Transaction Report</h2>
+
+                    <!-- Form to filter transactions by date range -->
+                    <form asp-action="Report" method="get">
+                        <div class="row mb-3">
+                            <div class="col-md-5">
+                                <label class="form-label">Start Date</label>
+                                <input type="date" class="form-control" asp-for="StartDate" value="@Model.StartDate.ToString("yyyy-MM-dd")" />
+                            </div>
+                            <div class="col-md-5">
+                                <label class="form-label">End Date</label>
+                                <input type="date" class="form-control" asp-for="EndDate" value="@Model.EndDate.ToString("yyyy-MM-dd")" />
+                            </div>
+                            <div class="col-md-2 d-flex align-items-end">
+                                <button type="submit" class="btn btn-primary">Filter</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Table to display transaction summaries -->
+                    <table class="table table-striped mt-4">
+                        <thead>
+                            <tr>
+                                <th>Transaction ID</th>
+                                <th>Receiver Name</th>
+                                <th>Transfer Amount</th>
+                                <th>Payout Amount</th>
+                                <th>Transaction Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var transaction in Model.Transactions)
+                            {
+                                <tr>
+                                    <td>@transaction.TransactionId</td>
+                                    <td>@transaction.ReceiverName</td>
+                                    <td>@transaction.TransferAmount</td>
+                                    <td>@transaction.PayoutAmount</td>
+                                    <td>@transaction.TransactionDate.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                                    <td>@transaction.Status</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
