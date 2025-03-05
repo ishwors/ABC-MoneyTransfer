@@ -79,7 +79,7 @@ Run the following command to clone the repository:
 
 1. Open a command prompt or terminal.
 2. Navigate to the cloned repository's root directory.
-3. Run the following command to start the Aloi backend application:
+3. Run the following command to start application:
 
     ```terminal
     dotnet run --project MoneyTransfer.Web
