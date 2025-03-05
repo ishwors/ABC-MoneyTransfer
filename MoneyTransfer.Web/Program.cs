@@ -3,8 +3,8 @@ using MoneyTransfer.Core.Services.ExchangeRate;
 using MoneyTransfer.Core.Services.Transaction;
 using MoneyTransfer.Core.Services.Helper;
 using MoneyTransfer.Data.Persistence;
-using MoneyTransfer.Core.Interfaces;
 using Microsoft.IdentityModel.Tokens;
+using MoneyTransfer.Core.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Text;
 
@@ -16,6 +16,7 @@ builder.Services.AddDbContext<MoneyTransferDbContext>(options =>
 
 builder.Services.AddHttpClient();
 builder.Services.AddScoped<IExchangeRateService, ExchangeRateService>();
+builder.Services.AddScoped<ITransactionService, TransactionService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<EncryptionDecryption>();
 
