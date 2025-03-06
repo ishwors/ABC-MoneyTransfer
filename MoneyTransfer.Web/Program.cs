@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http;
 using MoneyTransfer.Core.Services.ExchangeRate;
 using MoneyTransfer.Core.Services.Transaction;
 using MoneyTransfer.Core.Services.Helper;
@@ -11,6 +12,8 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container
+builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddDbContext<MoneyTransferDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -37,7 +40,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 
 // Add session services
-builder.Services.AddDistributedMemoryCache(); // Adds a default in-memory cache
+builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromHours(1);

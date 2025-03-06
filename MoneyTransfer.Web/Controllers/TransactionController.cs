@@ -97,18 +97,18 @@ namespace MoneyTransfer.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Report(ReportViewModel model = null)
+        public async Task<IActionResult> Report(ReportViewModel model)
         {
-            if (model == null)
+            if (model.StartDate == DateTime.MinValue)
             {
-                model = new ReportViewModel
-                {
-                    StartDate = DateTime.Today.AddDays(-30),
-                    EndDate = DateTime.Today
-                };
+                model.StartDate = DateTime.Today.AddDays(-30);
             }
 
-            //var userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            if (model.EndDate == DateTime.MinValue)
+            {
+                model.EndDate = DateTime.Today;
+            }
+
             var transactions = await _transactionService.GetTransactionsByDateRangeAsync(model.StartDate, model.EndDate, null);
 
             model.Transactions = transactions.Select(t => new TransactionSummaryViewModel
